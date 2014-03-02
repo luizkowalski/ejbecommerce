@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-    <persistence-unit name="javaDB" transaction-type="JTA"> 
+    <persistence-unit name="ecommerce" transaction-type="JTA"> 
 	   	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 	   	<properties> 
 	      	 <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/> 

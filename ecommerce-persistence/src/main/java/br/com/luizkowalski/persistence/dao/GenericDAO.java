@@ -3,12 +3,12 @@ package br.com.luizkowalski.persistence.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 public abstract class GenericDAO<EntityType, PrimaryKeyType extends Serializable> {
 
-	@Inject
+	@PersistenceContext(unitName = "ecommerce")
 	private EntityManager entityManager;
 	
 	protected EntityManager getEntityManager() {

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity
 public class Produto implements Serializable {
@@ -19,11 +18,15 @@ public class Produto implements Serializable {
 	private Long id;
 	
 	@Column
-	@Lob
+	private String nome;
+	
+	@Column(length=200)
 	private String descricao;
 	
 	@Column
 	private String codigoInterno;
+	
+	private String caminhoFoto;
 	
 	@Column(scale=2, precision=14)
 	private BigDecimal custoCompra;
@@ -33,6 +36,23 @@ public class Produto implements Serializable {
 	
 	@Column(scale=2, precision=3)
 	private BigDecimal margemLucro;
+	
+	public Produto() {}
+	
+	public Produto(String nome, String descricao, String codigoInterno,
+			String caminhoFoto, BigDecimal custoCompra,
+			BigDecimal despesasTotais, BigDecimal margemLucro) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.codigoInterno = codigoInterno;
+		this.caminhoFoto = caminhoFoto;
+		this.custoCompra = custoCompra;
+		this.despesasTotais = despesasTotais;
+		this.margemLucro = margemLucro;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -57,6 +77,22 @@ public class Produto implements Serializable {
 	
 	public void setCodigoInterno(String codigoInterno) {
 		this.codigoInterno = codigoInterno;
+	}
+	
+	public String getCaminhoFoto() {
+		return caminhoFoto;
+	}
+	
+	public void setCaminhoFoto(String caminhoFoto) {
+		this.caminhoFoto = caminhoFoto;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public BigDecimal getCustoCompra() {
