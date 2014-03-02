@@ -1,0 +1,3 @@
+- Clonar o projeto
+- `mvn clean install`
+- Fazer o deploy do `ear` gerado na pasta `target` para o container
