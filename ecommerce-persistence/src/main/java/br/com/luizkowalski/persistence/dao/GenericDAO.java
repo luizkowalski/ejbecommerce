@@ -10,6 +10,8 @@ public abstract class GenericDAO<EntityType, PrimaryKeyType extends Serializable
 	private EntityManager entityManager;
 	
 	public GenericDAO(EntityManager em) {
+		if(em == null)
+			System.err.println("EM IS NULL");
 		this.entityManager = em;
 	}
 	

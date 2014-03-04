@@ -7,6 +7,7 @@
 	      	 <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/> 
 	      	 <property name="eclipselink.target-database" value="Derby"/>
 	      	 <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:mycommerce;create=true" />
+	      	 <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 	   	</properties> 
 	   	
 	   	<class>br.com.luizkowalski.persistence.entities.Produto</class>

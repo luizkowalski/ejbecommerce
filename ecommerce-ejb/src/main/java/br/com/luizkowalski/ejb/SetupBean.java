@@ -20,14 +20,18 @@ public class SetupBean {
 	@PostConstruct
 	public void setupDatabase(){
 		// Instanciar os produtos para a venda
-		Produto produto = new Produto("Celular","iPhone 5S","ABC123","/pics/5s.png",
+		Produto produto = new Produto("Celular","iPhone 5S","IP5123","resources/img/produtos/5s.png",
 				new BigDecimal(1500),new BigDecimal(200), new BigDecimal(30));
 		
+		Produto produtoMac = new Produto("Notebook","MacBook Pro","MBPRO123","resources/img/produtos/mac.png",
+				new BigDecimal(3000),new BigDecimal(200), new BigDecimal(30));
+		
 		produtoService.salvar(produto);
+		produtoService.salvar(produtoMac);
 	}
 	
 	public void doIt(){
-		System.out.println("Done");
+		// TODO
 	}
 	
 }

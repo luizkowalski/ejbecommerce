@@ -34,7 +34,7 @@ public class Produto implements Serializable {
 	@Column(scale=2, precision=14)
 	private BigDecimal despesasTotais = new BigDecimal(400);
 	
-	@Column(scale=2, precision=3)
+	@Column(scale=2, precision=4)
 	private BigDecimal margemLucro;
 	
 	public Produto() {}
@@ -51,8 +51,6 @@ public class Produto implements Serializable {
 		this.despesasTotais = despesasTotais;
 		this.margemLucro = margemLucro;
 	}
-
-
 
 	public Long getId() {
 		return id;

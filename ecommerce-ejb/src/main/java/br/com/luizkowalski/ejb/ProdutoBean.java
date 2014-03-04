@@ -1,5 +1,6 @@
 package br.com.luizkowalski.ejb;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -18,25 +19,33 @@ public class ProdutoBean implements ProdutoRemote {
 	@PersistenceContext(unitName = "ecommerce")
 	private EntityManager entityManager;
 	
-	private ProdutoDAO produtoDAO = new ProdutoDAO(getEntityManager());
+	private ProdutoDAO produtoDAO;
 	
 	@Override
 	public List<Produto> listarProdutosAtivos() {
-		return produtoDAO.findAll();
-	}
-
-	private EntityManager getEntityManager() {
-		return entityManager;
+		return instanciarDAO().findAll();
 	}
 
 	@Override
 	public void salvar(Produto produto) {
-		produtoDAO.save(produto);
+		instanciarDAO().save(produto);
 	}
 
 	@Override
 	public Produto buscarCodigo(String codigo) {
-		return produtoDAO.findByCodigo(codigo);
+		return instanciarDAO().findByCodigo(codigo);
+	}
+	
+	private ProdutoDAO instanciarDAO(){
+		if(produtoDAO == null)
+			produtoDAO = new ProdutoDAO(entityManager);
+		
+		return produtoDAO;
+	}
+
+	@Override
+	public BigDecimal calcularValorVenda(Produto p) {
+		return null;
 	}
 
 }
