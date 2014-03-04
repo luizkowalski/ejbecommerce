@@ -5,8 +5,8 @@
 	   	<jta-data-source>jdbc/__TimerPool</jta-data-source> <!-- Embedded :) -->
 	   	<properties> 
 	      	 <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/> 
-	      	 <property name="eclipselink.target-database" value="DERBY"/>
-	      	 <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/memory:mycommerce;create=true" />
+	      	 <property name="eclipselink.target-database" value="Derby"/>
+	      	 <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:ecommerce;create=true" />
 	      	 <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 	   	</properties> 
 	   	
