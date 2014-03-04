@@ -18,11 +18,15 @@ public class ProdutoBean implements ProdutoRemote {
 	@PersistenceContext(unitName = "ecommerce")
 	private EntityManager entityManager;
 	
-	private ProdutoDAO produtoDAO = new ProdutoDAO(entityManager);
+	private ProdutoDAO produtoDAO = new ProdutoDAO(getEntityManager());
 	
 	@Override
 	public List<Produto> listarProdutosAtivos() {
 		return produtoDAO.findAll();
+	}
+
+	private EntityManager getEntityManager() {
+		return entityManager;
 	}
 
 	@Override
