@@ -2,11 +2,16 @@ package br.com.luizkowalski.persistence.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.luizkowalski.persistence.entities.Produto;
 
 public class ProdutoDAO extends GenericDAO<Produto, Long> {
+
+	public ProdutoDAO(EntityManager em) {
+		super(em);
+	}
 
 	@Override
 	public List<Produto> findAll() {

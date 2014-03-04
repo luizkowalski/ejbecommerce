@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 public abstract class GenericDAO<EntityType, PrimaryKeyType extends Serializable> {
 
-	@PersistenceContext(unitName = "ecommerce")
 	private EntityManager entityManager;
+	
+	public GenericDAO(EntityManager em) {
+		this.entityManager = em;
+	}
 	
 	protected EntityManager getEntityManager() {
 		return entityManager;
@@ -21,7 +23,6 @@ public abstract class GenericDAO<EntityType, PrimaryKeyType extends Serializable
 
     public void update(EntityType entity) {
         entityManager.merge(entity);
-
     }
 
     public abstract EntityType find(PrimaryKeyType primaryKey);
