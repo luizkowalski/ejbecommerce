@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Produto implements Serializable {
@@ -17,7 +18,7 @@ public class Produto implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(length=50)
 	private String nome;
 	
 	@Column(length=200)
@@ -36,6 +37,12 @@ public class Produto implements Serializable {
 	
 	@Column(scale=2, precision=4)
 	private BigDecimal margemLucro;
+	
+	@Transient
+	private BigDecimal valorVenda;
+	
+	@Transient
+	private Integer quantidade;
 	
 	public Produto() {}
 	
@@ -116,6 +123,22 @@ public class Produto implements Serializable {
 	public void setMargemLucro(BigDecimal margemLucro) {
 		this.margemLucro = margemLucro;
 	}
+	
+	public BigDecimal getValorVenda() {
+		return valorVenda;
+	}
+	
+	public void setValorVenda(BigDecimal valorVenda) {
+		this.valorVenda = valorVenda;
+	}
+	
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
 
 	@Override
 	public int hashCode() {
@@ -140,6 +163,19 @@ public class Produto implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public void calcularValorVenda(BigDecimal rateioDespesas) {
+		// Se existe margem de lucro, e ela é maior que 0, calcula
+		if(margemLucro != null && margemLucro.compareTo(BigDecimal.ZERO) > 0){
+			BigDecimal precoVenda = custoCompra.add(rateioDespesas);
+			BigDecimal taxa = new BigDecimal(1).add(margemLucro.divide(new BigDecimal(100)));
+			precoVenda = precoVenda.multiply(taxa);
+			setValorVenda(precoVenda);
+		} else {
+			// O exercicio nao diz o que fazer caso a margem seja 0
+		}
+		
 	}
 
 	

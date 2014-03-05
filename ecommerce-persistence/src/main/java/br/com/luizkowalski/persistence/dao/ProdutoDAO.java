@@ -16,7 +16,9 @@ public class ProdutoDAO extends GenericDAO<Produto, Long> {
 	@Override
 	public List<Produto> findAll() {
 		return getEntityManager().
-				createQuery("select p from Produto p where p.custoCompra is not null", Produto.class).getResultList();
+				createQuery("select p from Produto p where "
+						+ "p.custoCompra is not null "
+						+ "order by p.id", Produto.class).getResultList();
 	}
 
 	@Override
@@ -26,7 +28,7 @@ public class ProdutoDAO extends GenericDAO<Produto, Long> {
 	
 	public Produto findByCodigo(String codigo){
 		TypedQuery<Produto> query = 
-				getEntityManager().createQuery("select p from Protudo p where p.codigo = :codigo", Produto.class);
+				getEntityManager().createQuery("select p from Produto p where p.codigoInterno = :codigo", Produto.class);
 		query.setParameter("codigo", codigo);
 		
 		return query.getSingleResult();

@@ -1,6 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <t:base>
 
@@ -26,13 +27,13 @@
 								src="${produto.caminhoFoto}">
 						</a></td>
 						<td>${produto.descricao}</td>
-						<td>${produto.custoCompra}
-						<td>
+						<td><fmt:formatNumber pattern="#,##0" value="${produto.valorVenda}" type="currency"/><td>
 						<form action="listaProdutos" method="post">
 							<div class="large-3 columns">
 								<input type="text" name="quantidade" value="1" />
 							</div>
 			          		<input type="hidden" value="${produto.codigoInterno}" name="codigoInterno">
+			          		<input type="hidden" value="${produto.valorVenda}" name="preco">
 				          	<button type="submit" class="button">Adicionar ao carrinho</button>
 			          	</form>
 					</tr>

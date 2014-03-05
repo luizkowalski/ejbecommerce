@@ -21,6 +21,7 @@
 				<div class="panel">
 					<h3><a href="/ecommerce">Bem vindo ao myCommerce</a></h3>
 					<p>Escolha os produtos, adicione ao carrinho e boas compras</p>
+					<a href="/ecommerce/carro-compra">Acesse o seu carrinho</a>
 				</div>
 			</div>
 		</div>
